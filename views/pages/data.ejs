@@ -84,6 +84,11 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+
+  function getGroupID() {
+    var groupID = $('#groupid').val();
+    console.log('group id is ' + groupID)
+  }
 </script>
 
 <div class="jumbotron text-center">
@@ -92,7 +97,13 @@
 
 <div>
     <h1>whoisannoying</h1>
-    <p>Now that you've logged in, check out the data below.</p>
+    <p>Now that you've logged in, provide the ID of the group you would like data on.</p>
+    <p>This ID is found at the following place in the URL: <strong>https://www.facebook.com/groups/[GROUP-ID-HERE]/</strong></p>
+    <div class="form-group">
+      <label for="groupid">Group ID:</label>
+      <input type="text" class="form-control" id="groupid">
+      <button type="submit" class="btn btn-default" onclick="getGroupID">Submit</button>
+    </div>
     <!-- 
     TODO: use FB.getLoginStatus to test whether or not to show the login button
     TODO: FB.api will automatically add the access token to the call
