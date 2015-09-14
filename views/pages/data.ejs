@@ -22,6 +22,7 @@
       testAPI();
     } else {
       console.log('log in to continue');
+      window.location.replace('/')
     }
   }
 
@@ -58,6 +59,8 @@
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
+
+
 
   };
 
