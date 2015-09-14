@@ -20,12 +20,9 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
+      window.location.replace('/data')
     } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      FB.login(function(response) {
-        statusChangeCallback(response);
-      });
+      console.log('log in to continue');
     }
   }
 
@@ -91,11 +88,7 @@
   <div class="container">
 
 
-<div id="status">
-</div>
-    <a href="/" class="lang-logo">
-      <img src="/lang-logo.png">
-    </a>
+<div>
     <h1>whoisannoying</h1>
     <p>This app allows you to check out what members in a Facebook group you belong to are the most active. Log in below to get started.</p>
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
@@ -110,7 +103,6 @@
     TODO: use from field in each post to determine author of post https://developers.facebook.com/docs/graph-api/reference/v2.4/post
     TODO: count up all the user id's posts and graph results in readable format using https://developers.facebook.com/docs/graph-api/reference/user
     -->
-  </div>
 </div>
 
 
