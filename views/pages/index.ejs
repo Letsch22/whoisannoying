@@ -6,24 +6,6 @@
 
 <body>
 
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '860386630696520',
-      xfbml      : true,
-      version    : 'v2.4'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
   <% include ../partials/nav.ejs %>
 
 <script>
@@ -38,15 +20,12 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      FB.login(function(response)){
+        statusChangeCallback(response);
+      }
     }
   }
 
@@ -95,6 +74,7 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
+
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
@@ -120,6 +100,16 @@
     <p>This app allows you to check out what members in a Facebook group you belong to are the most active. Log in below to get started.</p>
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>
+    <!-- 
+    TODO: use FB.getLoginStatus to test whether or not to show the login button
+    TODO: FB.api will automatically add the access token to the call
+    TODO: add permissions for necessary things (groups you belong to, etc)
+    TODO: get list of user groups with https://developers.facebook.com/docs/graph-api/reference/user/groups/
+    TODO: make list of user groups in readable HTML format with https://developers.facebook.com/docs/graph-api/reference/v2.4/group
+    TODO: grab group post feed with https://developers.facebook.com/docs/graph-api/reference/v2.4/group/feed
+    TODO: use from field in each post to determine author of post https://developers.facebook.com/docs/graph-api/reference/v2.4/post
+    TODO: count up all the user id's posts and graph results in readable format using https://developers.facebook.com/docs/graph-api/reference/user
+    -->
   </div>
 </div>
 
