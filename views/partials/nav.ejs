@@ -19,9 +19,11 @@
 <nav class="navbar navbar-default navbar-static-top navbar-inverse">
   <div class="container">
     <ul class="nav navbar-nav">
-      <li class="active">
+      <li <% if (page_name === 'index') { %>class="active" <% } %> >
         <a href="/"><span class="glyphicon glyphicon-home"></span> Login</a>
       </li>
+      <li <% if (page_name === 'data') { %>class="active" <% } %> >
+        <a href="/data"><span class="glyphicon glyphicon-signal"></span> Data</a>
       </li>
     </ul>
   </div>
