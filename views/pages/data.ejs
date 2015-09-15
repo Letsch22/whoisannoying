@@ -22,7 +22,7 @@
       testAPI();
     } else {
       console.log('log in to continue');
-      window.location.replace('/')
+      window.location.replace('/');
     }
   }
 
@@ -80,7 +80,7 @@
         if (response && !response.error) {
           /* handle the result */
           for (var i = response.length - 1; i >= 0; i--) {
-            if (associativeArray[response[i].from.name] == undefined) {
+            if (associativeArray[response[i].from.name] === undefined) {
               associativeArray[response[i].from.name] = 1;
             } else {
               associativeArray[response[i].from.name] = associativeArray[response[i].from.name] + 1;
@@ -89,7 +89,7 @@
                 console.log(associativeArray[key]);
               }
             } 
-          };
+          }
         }
       }
       );
