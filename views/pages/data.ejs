@@ -73,6 +73,7 @@
   var associativeArray = {}
 
   function apiCall() {
+    console.log('got to api call')
     FB.api(
       "/" + groupID + "/feed",
       function (response) {
