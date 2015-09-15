@@ -56,6 +56,8 @@
   //
   // These three cases are handled in the callback function.
 
+  var groupId;
+
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
@@ -110,7 +112,7 @@
   }
 
   function getGroupID() {
-    var groupID = $('#groupid').val();
+    groupID = $('#groupid').val();
     console.log('group id is ' + groupID)
   }
 </script>
