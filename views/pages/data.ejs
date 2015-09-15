@@ -64,6 +64,10 @@
 
   };
 
+  $(window).load(function(){
+        $('#myModal').modal('show');
+    });
+
   // Load the SDK asynchronously
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -94,14 +98,22 @@
 
 
 <div>
-    <h1>whoisannoying</h1>
-    <p>Now that you've logged in, provide the ID of the group you would like data on.</p>
-    <p>This ID is found at the following place in the URL: <strong>https://www.facebook.com/groups/[GROUP-ID-HERE]/</strong></p>
+  <h1>whoisannoying</h1>
+  <p>Now that you've logged in, check out the data below.</p>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-body">
+    <p>Provide the ID of the group you would like data on. This ID is found at the following place in the URL: </p>
+    <p><strong>https://www.facebook.com/groups/[GROUP-ID-HERE]/</strong></p>
+  </div>
+  <div class="modal-footer">
     <div class="form-group">
       <label for="groupid">Group ID:</label>
       <input type="text" class="form-control" id="groupid">
-      <button type="submit" class="btn btn-default" onclick="getGroupID()">Submit</button>
+      <button type="submit" class="btn btn-default" data-dismiss="modal" onclick="getGroupID()">Submit</button>
     </div>
+  </div>
     <!-- 
     TODO: use FB.getLoginStatus to test whether or not to show the login button
     TODO: FB.api will automatically add the access token to the call
@@ -112,6 +124,7 @@
     TODO: use from field in each post to determine author of post https://developers.facebook.com/docs/graph-api/reference/v2.4/post
     TODO: count up all the user id's posts and graph results in readable format using https://developers.facebook.com/docs/graph-api/reference/user
     -->
+</div>
 </div>
 
 
