@@ -71,26 +71,32 @@
     });
 
   var associativeArray = {};
-  associativeArray["test"] = 1;
+  var groupName;
 
   function apiCall() {
-    console.log('got to api call');
+    FB.api(
+      "/" + groupID,
+      function (response) {
+        if (response && !response.error) {
+          groupName = response.name;
+        }
+      }
+      );
     FB.api(
       "/" + groupID + "/feed?fields=from",
       function (response) {
         if (response && !response.error) {
-          console.log('api call worked')
           /* handle the result */
           for (var i = response.data.length - 1; i >= 0; i--) {
             if (associativeArray[response.data[i].from.name] === undefined) {
               associativeArray[response.data[i].from.name] = 1;
             } else {
               associativeArray[response.data[i].from.name] = associativeArray[response.data[i].from.name] + 1;
-              for (var key in associativeArray) {
-                console.log(key);
-                console.log(associativeArray[key]);
-              }
-            } 
+            }
+          }
+          for (var key in associativeArray) {
+            console.log(key);
+            console.log(associativeArray[key]); 
           }
         }
       }
