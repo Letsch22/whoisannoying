@@ -83,10 +83,9 @@
       }
       );
     FB.api(
-      "/" + groupID + "/feed?fields=from",
+      "/" + groupID + "/feed?limit=10000&fields=from",
       function (response) {
         if (response && !response.error) {
-          /* handle the result */
           for (var i = response.data.length - 1; i >= 0; i--) {
             if (associativeArray[response.data[i].from.name] === undefined) {
               associativeArray[response.data[i].from.name] = 1;
