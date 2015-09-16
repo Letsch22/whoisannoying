@@ -98,13 +98,18 @@
             console.log(associativeArray[key]); 
           }
         }
-        addHtml(groupName, associativeArray);
+        addHtml();
       }
       );
   }
 
-  function addHtml(group_name, associative_array) {
-    document.getElementById("groupName").innerHTML = "Top posters for " + group_name;
+  function addHtml() {
+    document.getElementById('groupName').innerHTML = 'Top posters for ' + groupName;
+    var html = "";
+    for (var key in associativeArray) {
+      html += '<li class="list-group-item"><span class="badge">' + associativeArray[key] + '</span>' + key + '</li>';
+    }
+    document.getElementById("namesList").innerHTML = html;
   }
 
   // Load the SDK asynchronously
@@ -136,7 +141,6 @@
 <div class="container">
   <div class="jumbotron text-center">
 
-
     <div>
       <h1>whoisannoying</h1>
       <p>Now that you've logged in, check out the data below.</p>
@@ -161,9 +165,9 @@
   </div>
   <div class="well">
     <h1 id="groupName"></h1>
-
   </div>
-
+  <ul class="list-group" id="namesList"></ul>
+</div>
 
 
 </body>
