@@ -100,6 +100,11 @@
         }
       }
       );
+    addHtml();
+  }
+
+  function addHtml() {
+    document.getElementById("groupName").innerHTML = "Top posters for " + groupName;
   }
 
   // Load the SDK asynchronously
@@ -128,41 +133,37 @@
   }
 </script>
 
-<div class="jumbotron text-center">
-  <div class="container">
+<div class="container">
+  <div class="jumbotron text-center">
 
 
-<div>
-  <h1>whoisannoying</h1>
-  <p>Now that you've logged in, check out the data below.</p>
-</div>
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <p>Provide the ID of the group you would like data on. This ID is found at the following place in the URL: </p>
-        <p><strong>https://www.facebook.com/groups/[GROUP-ID-HERE]/</strong></p>
-      </div>
-      <div class="modal-footer">
-        <div class="form-group">
-          <label for="groupid">Group ID:</label>
-          <input type="text" class="form-control" id="groupid">
-          <button type="submit" class="btn btn-default" data-dismiss="modal" onclick="getGroupID()">Submit</button>
+    <div>
+      <h1>whoisannoying</h1>
+      <p>Now that you've logged in, check out the data below.</p>
+    </div>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Provide the ID of the group you would like data on. This ID is found at the following place in the URL: </p>
+          <p><strong>https://www.facebook.com/groups/[GROUP-ID-HERE]/</strong></p>
+        </div>
+        <div class="modal-footer">
+          <div class="form-group">
+            <label for="groupid">Group ID:</label>
+            <input type="text" class="form-control" id="groupid">
+            <button type="submit" class="btn btn-default" data-dismiss="modal" onclick="getGroupID()">Submit</button>
+          </div>
         </div>
       </div>
     </div>
-    <!-- 
-    TODO: use FB.getLoginStatus to test whether or not to show the login button
-    TODO: FB.api will automatically add the access token to the call
-    TODO: add permissions for necessary things (groups you belong to, etc)
-    TODO: get list of user groups with https://developers.facebook.com/docs/graph-api/reference/user/groups/
-    TODO: make list of user groups in readable HTML format with https://developers.facebook.com/docs/graph-api/reference/v2.4/group
-    TODO: grab group post feed with https://developers.facebook.com/docs/graph-api/reference/v2.4/group/feed
-    TODO: use from field in each post to determine author of post https://developers.facebook.com/docs/graph-api/reference/v2.4/post
-    TODO: count up all the user id's posts and graph results in readable format using https://developers.facebook.com/docs/graph-api/reference/user
-    -->
   </div>
-</div>
+  <div class="well">
+    <h1 id="groupName"></h1>
+
+  </div>
+
 
 
 </body>
