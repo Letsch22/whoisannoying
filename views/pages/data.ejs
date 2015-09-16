@@ -100,11 +100,11 @@
         }
       }
       );
-    addHtml();
+    addHtml(groupName, associativeArray);
   }
 
-  function addHtml() {
-    document.getElementById("groupName").innerHTML = "Top posters for " + groupName;
+  function addHtml(group_name, associative_array) {
+    document.getElementById("groupName").innerHTML = "Top posters for " + group_name;
   }
 
   // Load the SDK asynchronously
