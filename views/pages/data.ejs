@@ -76,16 +76,16 @@
   function apiCall() {
     console.log('got to api call');
     FB.api(
-      "/" + groupID + "/feed",
+      "/" + groupID + "/feed?fields=from",
       function (response) {
         if (response && !response.error) {
           console.log('api call worked')
           /* handle the result */
-          for (var i = response.length - 1; i >= 0; i--) {
-            if (associativeArray[response[i].from.name] === undefined) {
-              associativeArray[response[i].from.name] = 1;
+          for (var i = response.data.length - 1; i >= 0; i--) {
+            if (associativeArray[response.data[i].from.name] === undefined) {
+              associativeArray[response.data[i].from.name] = 1;
             } else {
-              associativeArray[response[i].from.name] = associativeArray[response[i].from.name] + 1;
+              associativeArray[response.data[i].from.name] = associativeArray[response.data[i].from.name] + 1;
               for (var key in associativeArray) {
                 console.log(key);
                 console.log(associativeArray[key]);
