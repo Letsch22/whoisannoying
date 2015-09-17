@@ -130,7 +130,7 @@
     array[end] = temp;
     var nextLeft = start;
     for (var i = start; i < end; i++) {
-      if (associativeArray[array[i]] <= pValue) {
+      if (associativeArray[array[i]] >= pValue) {
         var temp2 = array[i];
         array[i] = array[nextLeft];
         array[nextLeft] = temp2;
