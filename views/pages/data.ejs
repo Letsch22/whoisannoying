@@ -72,6 +72,7 @@
 
   var associativeArray = {};
   var groupName = "";
+  var array = [];
 
   function apiCall() {
     FB.api(
@@ -98,16 +99,55 @@
             console.log(associativeArray[key]); 
           }
         }
+        Quicksort(associativeArray);
         addHtml();
       }
       );
   }
 
+  function Quicksort(associativeArray) {
+    for (var key in associativeArray) {
+      var i = 0;
+      array[i] = key;
+      i++;
+    }
+    QuicksortRecur(array, associativeArray, 0, array.length - 1);
+  }
+
+  function QuicksortRecur(array, start, end) {
+    if (end > start) {
+      var pIndex = Math.floor((Math.random() * array.length) + 1);
+      var newIndex = partition(array, associativeArray, pIndex, start, end);
+      QuicksortRecur(array, associativeArray, start, newIndex - 1);
+      QuicksortRecur(array, associativeArray, newIndex + 1, end);
+    }
+  }
+
+  function partition(array, associativeArray, pIndex, start, end) {
+    var pValue = associativeArray[array[pIndex]];
+    var temp = array[pIndex];
+    array[pIndex] = array[end];
+    array[end] = temp;
+    var nextLeft = start;
+    for (var i = start; i <= end - 1; i++) {
+      if (array[i] <= pValue) {
+        var temp2 = array[i];
+        array[i] = array[nextLeft];
+        array[nextLeft] = temp;
+        nextLeft++;
+      }
+    };
+    var temp3 = array[nextLeft];
+    array[nextLeft] = array[end];
+    array[end] = array[nextLeft];
+    return nextLeft;
+  }
+
   function addHtml() {
     document.getElementById('groupName').innerHTML = 'Top posters for ' + groupName;
     var html = "";
-    for (var key in associativeArray) {
-      html += '<li class="list-group-item"><span class="badge">' + associativeArray[key] + '</span>' + key + '</li>';
+    for (var i = 0; i <= array.length - 1; i++) {
+      html += '<li class="list-group-item"><span class="badge">' + associativeArray[array[i]] + '</span>' + key + '</li>';
     }
     document.getElementById("namesList").innerHTML = html;
   }
