@@ -105,25 +105,25 @@
       );
   }
 
-  function Quicksort(associativeArray) {
+  function Quicksort() {
     var i = 0;
     for (var key in associativeArray) {
       array[i] = key;
       i++;
     }
-    QuicksortRecur(array, associativeArray, 0, array.length - 1);
+    QuicksortRecur(0, array.length - 1);
   }
 
-  function QuicksortRecur(array, start, end) {
+  function QuicksortRecur(start, end) {
     if (end > start) {
       var pIndex = Math.floor((Math.random() * array.length) + 1);
-      var newIndex = partition(array, associativeArray, pIndex, start, end);
-      QuicksortRecur(array, associativeArray, start, newIndex - 1);
-      QuicksortRecur(array, associativeArray, newIndex + 1, end);
+      var newIndex = partition(pIndex, start, end);
+      QuicksortRecur(start, newIndex - 1);
+      QuicksortRecur(newIndex + 1, end);
     }
   }
 
-  function partition(array, associativeArray, pIndex, start, end) {
+  function partition(pIndex, start, end) {
     var pValue = associativeArray[array[pIndex]];
     var temp = array[pIndex];
     array[pIndex] = array[end];
