@@ -106,8 +106,8 @@
   }
 
   function Quicksort(associativeArray) {
+    var i = 0;
     for (var key in associativeArray) {
-      var i = 0;
       array[i] = key;
       i++;
     }
@@ -129,7 +129,7 @@
     array[pIndex] = array[end];
     array[end] = temp;
     var nextLeft = start;
-    for (var i = start; i <= end - 1; i++) {
+    for (var i = start; i < end; i++) {
       if (array[i] <= pValue) {
         var temp2 = array[i];
         array[i] = array[nextLeft];
