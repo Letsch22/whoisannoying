@@ -133,13 +133,13 @@
       if (associativeArray[array[i]] <= pValue) {
         var temp2 = array[i];
         array[i] = array[nextLeft];
-        array[nextLeft] = temp;
+        array[nextLeft] = temp2;
         nextLeft++;
       }
     };
     var temp3 = array[nextLeft];
     array[nextLeft] = array[end];
-    array[end] = array[nextLeft];
+    array[end] = temp3;
     return nextLeft;
   }
 
