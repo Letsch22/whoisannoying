@@ -147,7 +147,7 @@
     document.getElementById('groupName').innerHTML = 'Top posters for ' + groupName;
     var html = "";
     for (var i = 0; i <= array.length - 1; i++) {
-      html += '<li class="list-group-item"><span class="badge">' + associativeArray[array[i]] + '</span>' + key + '</li>';
+      html += '<li class="list-group-item"><span class="badge">' + associativeArray[array[i]] + '</span>' + array[i] + '</li>';
     }
     document.getElementById("namesList").innerHTML = html;
   }
