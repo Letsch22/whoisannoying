@@ -111,8 +111,7 @@
       array[i] = key;
       i++;
     }
-    var pIndex = Math.floor((Math.random() * array.length) + 1);
-    QuicksortRecur(pIndex, 0, array.length - 1);
+    QuicksortRecur(0, array.length - 1);
   }
 
   function QuicksortRecur(start, end) {
