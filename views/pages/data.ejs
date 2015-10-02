@@ -116,7 +116,7 @@
 
   function QuicksortRecur(start, end) {
     if (end > start) {
-      var pIndex = 1;
+      var pIndex = array.length - 1;
       var newIndex = partition(pIndex, start, end);
       QuicksortRecur(start, newIndex - 1);
       QuicksortRecur(newIndex + 1, end);
